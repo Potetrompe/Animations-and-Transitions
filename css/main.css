@@ -1,39 +1,41 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald|Montserrat:400,400i,700,700i&effect=anaglyph|fire-animation);
 body {
-  background-color: #c8cead;
-  color: #232020;
-  font-size: 1em;
+  background: #222;
+  color: #eee;
+  font-size: .75em;
   font-family: "Montserrat";
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  width: 960px;
+  margin: 1em auto;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1em;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr (5fr)[8];
+      grid-template-rows: 1fr repeat(8, 5fr);
 }
 
-body .imgCat {
+body header {
+  padding: .5em;
+  background: #300;
+  text-align: center;
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+body div.slots {
+  background: #33555340;
+  padding: 1em;
+}
+
+body div.slots .imgCat {
   border: 2px solid black;
-  width: 250px;
+  width: auto;
   -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
 
-body .imgCat:first-child {
-  width: 300px;
-  -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
-}
-
-body #list:first-child {
+body div.slots #list:first-child {
   background-color: red;
-}
-
-body .imgCat:hover {
-  width: 100px;
 }
 /*# sourceMappingURL=main.css.map */

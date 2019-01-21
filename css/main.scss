@@ -6,40 +6,54 @@
     $altFont: 'Oswald';
 
 //-----Colors-----//
-    $mainTxtCol: rgb(35, 32, 32);
-    $mainBGCol: rgb(200, 206, 173);
+    $mainTxtCol: #eee;//rgb(35, 32, 32);
+    $altTxtCol: #300;
 
+    $mainBGCol: #222;//rgb(200, 206, 173);
+    $altBGCol: #33555340;
 //-----Style-----//
     body{
-        background-color: $mainBGCol;
+        background: $mainBGCol;
         color: $mainTxtCol;
-        font-size: 1em;
+        font-size: .75em;
         font-family: $mainFont;
 
-        display: flex;
-        flex-direction: column;
-        //justify-content: center;
-        align-items: center;
+        width: 960px;
+        margin: 1em auto;
 
-        .imgCat{
-            border: 2px solid black;
-            width: 250px;
-            transition: all ease 0.5s;
-
-        }
+        display: grid;
+        grid-gap: 1em;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr repeat(8, 5fr);
         
-        .imgCat:first-child{ // :nth-child(2){}
-            width: 300px;
-            transform: translateY(-10px);
+        header{
+            padding: .5em;
+            background: $altTxtCol;
+            
+            text-align: center;
+
+            grid-column: span 2;
+            grid-row: span 1;
         }
 
-        #list:first-child{
-            background-color: red;
-        }
-    }
-    body .imgCat:hover{
-        width: 100px;
-    }
+        div.slots{ //| Card-divs
+            background: $altBGCol;
+            padding: 1em;
+
+
+            .imgCat{
+                border: 2px solid black;
+                width: auto;
+                transition: all ease 0.5s;
     
+            }
+            
+    
+            #list:first-child{
+                background-color: red;
+            }
+        }
 
+        
+    }
 
