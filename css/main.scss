@@ -26,6 +26,7 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr repeat(8, 5fr);
         
+        
         header{
             padding: .5em;
             background: $altTxtCol;
@@ -49,11 +50,22 @@
             }
             
     
-            #list:first-child{
-                background-color: red;
+            
+        }
+
+        div.slots:nth-of-type(1){
+            
+            .imgCat{
+                width: 300px;
+                transition: all linear 0.2s;//, 
+            }
+
+            .imgCat:hover{
+                transform: translateY(10px) translateX(20px);
+                width: 380px;
+
             }
         }
 
-        
     }
 
