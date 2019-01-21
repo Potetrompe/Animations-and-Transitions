@@ -1,0 +1,45 @@
+
+//-----Fonts-----//
+    @import url(https://fonts.googleapis.com/css?family=Oswald|Montserrat:400,400i,700,700i&effect=anaglyph|fire-animation);
+    // class="font-effect-fire-animation" OR class="font-effect-anaglyph"
+    $mainFont: 'Montserrat';
+    $altFont: 'Oswald';
+
+//-----Colors-----//
+    $mainTxtCol: rgb(35, 32, 32);
+    $mainBGCol: rgb(200, 206, 173);
+
+//-----Style-----//
+    body{
+        background-color: $mainBGCol;
+        color: $mainTxtCol;
+        font-size: 1em;
+        font-family: $mainFont;
+
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+
+        .imgCat{
+            border: 2px solid black;
+            width: 250px;
+            transition: all ease 0.5s;
+
+        }
+        
+        .imgCat:first-child{ // :nth-child(2){}
+            width: 300px;
+            transform: translateY(-10px);
+        }
+
+        #list:first-child{
+            background-color: red;
+        }
+    }
+    body .imgCat:hover{
+        width: 100px;
+    }
+    
+
+
