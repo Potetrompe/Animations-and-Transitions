@@ -4,7 +4,6 @@
     // class="font-effect-fire-animation" OR class="font-effect-anaglyph"
     $mainFont: 'Montserrat';
     $altFont: 'Oswald';
-
 //-----Colors-----//
     $mainTxtCol: #eee;//rgb(35, 32, 32);
     $altTxtCol: #300; //#3db
@@ -38,10 +37,14 @@
             grid-row: span 1;
         }
 
-        div.slots{ //| Card-divs
+        //? General
+        div.slots{ //| Grid boxes General
             background: $altBGCol;
             padding: 1em;
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
             .imgCat{
                 border: 2px solid black;
@@ -49,84 +52,147 @@
                 transition: all ease 0.5s;
     
             }
-            
         }
 
-
-        div#treD{
-            perspective: 600px;
-
-            div#cardInner{
-                width: 100%;
-                height: 100%;
-                transform-style: preserve-3d;
-                
-
-                div{
-                    width: 200px;
-                    height: 200px;
-                    position: absolute;
-                    transition: all 0.25s linear;
-                    //transform: skewX(20deg);
+        //* Cube
+        div.slots:nth-of-type(3){
+            div#scene{
+                width: 400px;
+                height: 400px;
+                perspective: 600px;
+    
+                position: relative;
+                //top: 200px; //| fuuck css
+    
+    
+                div#cube{
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    transform-style: preserve-3d;
+    
+                    //* fix for fuzzy text, 
+                    //* moves the cube back so the text is in focus
+                    transform: translateZ(-200px);
+                    transition: transform 1s linear;
                     
+                    
+                    div.cubeFace{
+                        position: absolute;
+                        width:  400px;
+                        height: 400px;
+                        //backface-visibility: hidden;
+    
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        justify-content: center;
+    
+                        //background: #fff3;
+                        font-family: Verdana, Geneva, Tahoma, sans-serif;
+                        font-weight: 600;
+                        color: #123;
+                        font-size: 3em;
+                        border: 1px solid #000;
+    
+    
                     }
+                    
+                    .cubeFront{
+                        transform: rotateY(0deg) translateZ(200px);
+                        background: #0ff5;
+                    }
+                    .cubeRight{
+                        transform: rotateY(90deg) translateZ(200px);
+                        background: #f0f5;
+                    }
+                    .cubeBack{
+                        transform: rotateY(180deg) translateZ(200px);
+                        background: #f005;
+                    }
+                    .cubeLeft{
+                        transform: rotateY(-90deg) translateZ(200px);
+                        background: #ff05;
+                    }
+                    .cubeTop{
+                        transform: rotateX(90deg) translateZ(200px);
+                        background: #0f05;
+                    }
+                    .cubeBottom{
+                        transform: rotateX(-90deg) translateZ(200px);
+                        background: #00f5;
+                    }
+                }
+                div#cube:hover{
+                    transform: translateZ(-200px)rotateY(180deg);
+                }
+                div#cube:active{
+                    transform: translateZ(-200px)rotateX(180deg);
+                }
+            }
+        }
+
+        //* Card
+        div.slots:nth-of-type(2){
+            div#treD{
+                perspective: 600px;
+                width:  200px;
+                height: 200px;
+                position: relative;
+
+                animation: boxTurn 1s linear 0s 2 alternate;
+    
+                div#cardInner{
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    transform-style: preserve-3d;
+                    
+                    div{
+                        width: 200px;
+                        height: 200px;
+                        position: absolute;
+
+                        backface-visibility: hidden;
+                        border: 1px solid #000;
+                    }
+                    
+                    div:nth-of-type(1){
+                        background: #2575;
+                        //animation: boxTurn 1s linear 0s 1 alternate;
+                        transform: rotateY(0deg);
+                    }
+                    div:nth-of-type(2){
+                        background: #5275;
+                        //animation: boxTurn 1s linear 0s 1 alternate forwards;
+                        transform: rotateY(180deg);
+                    }
+                }
+                div#treD:hover{
+                    //| transition here
+                }
+                @keyframes boxTurn{
+                    0%{
+                        transform: rotateY(0deg);
+                    }
+        
+                    100%{
+                        transform: rotateY(180deg);
+                    }
+                }
                 
-                div:nth-of-type(1){
-                    background: #2575;
-                    //animation: boxTurn 1s linear 0s 1 alternate;
-                    transform: rotateY(0deg);
-                }
-                div:nth-of-type(2){
-                    background: #5275;
-                    //animation: boxTurn 1s linear 0s 1 alternate forwards;
-                    transform: rotateY(0deg);
-                }
-                /*
-                div:nth-of-type(3){
-                    background: #7525;
-                    transform: rotateY(180deg);
-                }
-                div:nth-of-type(4){
-                    background: #2755;
-                    transform: rotateY(180deg);
-                }*/
-            }
-            
-        }
-        div#treD:active{
-            div#cardInner{
-                div:nth-of-type(1){
-                    animation: boxTurn 1s linear 0s 1 alternate;
-                }
-                div:nth-of-type(2){
-                    animation: boxTurn 1s linear 0s 1 alternate forwards;
-                }
-            }
-        }
-        @keyframes boxTurn{
-            0%{
-                transform: rotateY(0deg);
-            }
-
-            100%{
-                transform: rotateY(180deg);
             }
         }
         
-        
-        
-
+        //* Cat
         div.slots:nth-of-type(1){
-            
             .imgCat{
                 width: 300px;
                 transition: all linear 0.2s;//, 
             }
-
             .imgCat:hover{
                 transform: translateY(10px) translateX(20px);
                 width: 380px;
-
             }
         }
 

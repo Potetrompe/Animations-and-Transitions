@@ -25,6 +25,19 @@
   body div.slots {
     background: #33555340;
     padding: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   body div.slots .imgCat {
     border: 2px solid black;
@@ -32,49 +45,118 @@
     -webkit-transition: all ease 0.5s;
     transition: all ease 0.5s;
   }
-  body div#treD {
+  body div.slots:nth-of-type(3) div#scene {
+    width: 400px;
+    height: 400px;
     -webkit-perspective: 600px;
             perspective: 600px;
+    position: relative;
   }
-  body div#treD div#cardInner {
+  body div.slots:nth-of-type(3) div#scene div#cube {
     width: 100%;
     height: 100%;
+    position: relative;
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
-    /*
-                div:nth-of-type(3){
-                    background: #7525;
-                    transform: rotateY(180deg);
-                }
-                div:nth-of-type(4){
-                    background: #2755;
-                    transform: rotateY(180deg);
-                }*/
+    -webkit-transform: translateZ(-200px);
+            transform: translateZ(-200px);
+    -webkit-transition: -webkit-transform 1s linear;
+    transition: -webkit-transform 1s linear;
+    transition: transform 1s linear;
+    transition: transform 1s linear, -webkit-transform 1s linear;
   }
-  body div#treD div#cardInner div {
+  body div.slots:nth-of-type(3) div#scene div#cube div.cubeFace {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: #123;
+    font-size: 3em;
+    border: 1px solid #000;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeFront {
+    -webkit-transform: rotateY(0deg) translateZ(200px);
+            transform: rotateY(0deg) translateZ(200px);
+    background: #0ff5;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeRight {
+    -webkit-transform: rotateY(90deg) translateZ(200px);
+            transform: rotateY(90deg) translateZ(200px);
+    background: #f0f5;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeBack {
+    -webkit-transform: rotateY(180deg) translateZ(200px);
+            transform: rotateY(180deg) translateZ(200px);
+    background: #f005;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeLeft {
+    -webkit-transform: rotateY(-90deg) translateZ(200px);
+            transform: rotateY(-90deg) translateZ(200px);
+    background: #ff05;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeTop {
+    -webkit-transform: rotateX(90deg) translateZ(200px);
+            transform: rotateX(90deg) translateZ(200px);
+    background: #0f05;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube .cubeBottom {
+    -webkit-transform: rotateX(-90deg) translateZ(200px);
+            transform: rotateX(-90deg) translateZ(200px);
+    background: #00f5;
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube:hover {
+    -webkit-transform: translateZ(-200px) rotateY(180deg);
+            transform: translateZ(-200px) rotateY(180deg);
+  }
+  body div.slots:nth-of-type(3) div#scene div#cube:active {
+    -webkit-transform: translateZ(-200px) rotateX(180deg);
+            transform: translateZ(-200px) rotateX(180deg);
+  }
+  body div.slots:nth-of-type(2) div#treD {
+    -webkit-perspective: 600px;
+            perspective: 600px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    -webkit-animation: boxTurn 1s linear 0s 2 alternate;
+            animation: boxTurn 1s linear 0s 2 alternate;
+  }
+  body div.slots:nth-of-type(2) div#treD div#cardInner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+  }
+  body div.slots:nth-of-type(2) div#treD div#cardInner div {
     width: 200px;
     height: 200px;
     position: absolute;
-    -webkit-transition: all 0.25s linear;
-    transition: all 0.25s linear;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    border: 1px solid #000;
   }
-  body div#treD div#cardInner div:nth-of-type(1) {
+  body div.slots:nth-of-type(2) div#treD div#cardInner div:nth-of-type(1) {
     background: #2575;
     -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
   }
-  body div#treD div#cardInner div:nth-of-type(2) {
+  body div.slots:nth-of-type(2) div#treD div#cardInner div:nth-of-type(2) {
     background: #5275;
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-  }
-  body div#treD:active div#cardInner div:nth-of-type(1) {
-    -webkit-animation: boxTurn 1s linear 0s 1 alternate;
-            animation: boxTurn 1s linear 0s 1 alternate;
-  }
-  body div#treD:active div#cardInner div:nth-of-type(2) {
-    -webkit-animation: boxTurn 1s linear 0s 1 alternate forwards;
-            animation: boxTurn 1s linear 0s 1 alternate forwards;
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
   }
   @-webkit-keyframes boxTurn {
     0% {
