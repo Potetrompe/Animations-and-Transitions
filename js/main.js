@@ -1,5 +1,6 @@
 
-var slots = document.querySelectorAll("div");
+var body = document.querySelector("body");
+var slots = body.querySelectorAll("div.slots");
 var revArr = [];
 
 for (var i = 0; i < slots.length; i++) {

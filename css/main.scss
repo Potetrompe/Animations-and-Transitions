@@ -7,23 +7,24 @@
 
 //-----Colors-----//
     $mainTxtCol: #eee;//rgb(35, 32, 32);
-    $altTxtCol: #300;
+    $altTxtCol: #300; //#3db
 
     $mainBGCol: #222;//rgb(200, 206, 173);
     $altBGCol: #33555340;
 //-----Style-----//
+@media screen and (min-width : 520px){    
     body{
         background: $mainBGCol;
         color: $mainTxtCol;
         font-size: .75em;
         font-family: $mainFont;
 
-        width: 960px;
+        width: 480px;//960px;
         margin: 1em auto;
 
         display: grid;
         grid-gap: 1em;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: 1fr repeat(8, 5fr);
         
         
@@ -33,7 +34,7 @@
             
             text-align: center;
 
-            grid-column: span 2;
+            grid-column: span 1;
             grid-row: span 1;
         }
 
@@ -49,9 +50,71 @@
     
             }
             
-    
+        }
+
+
+        div#treD{
+            perspective: 600px;
+
+            div#cardInner{
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                
+
+                div{
+                    width: 200px;
+                    height: 200px;
+                    position: absolute;
+                    transition: all 0.25s linear;
+                    //transform: skewX(20deg);
+                    
+                    }
+                
+                div:nth-of-type(1){
+                    background: #2575;
+                    //animation: boxTurn 1s linear 0s 1 alternate;
+                    transform: rotateY(0deg);
+                }
+                div:nth-of-type(2){
+                    background: #5275;
+                    //animation: boxTurn 1s linear 0s 1 alternate forwards;
+                    transform: rotateY(0deg);
+                }
+                /*
+                div:nth-of-type(3){
+                    background: #7525;
+                    transform: rotateY(180deg);
+                }
+                div:nth-of-type(4){
+                    background: #2755;
+                    transform: rotateY(180deg);
+                }*/
+            }
             
         }
+        div#treD:active{
+            div#cardInner{
+                div:nth-of-type(1){
+                    animation: boxTurn 1s linear 0s 1 alternate;
+                }
+                div:nth-of-type(2){
+                    animation: boxTurn 1s linear 0s 1 alternate forwards;
+                }
+            }
+        }
+        @keyframes boxTurn{
+            0%{
+                transform: rotateY(0deg);
+            }
+
+            100%{
+                transform: rotateY(180deg);
+            }
+        }
+        
+        
+        
 
         div.slots:nth-of-type(1){
             
@@ -69,3 +132,14 @@
 
     }
 
+}
+@media screen and (min-width : 1000px/*960px*/){
+    body{
+        width: 960px;
+        grid-template-columns: 1fr 1fr;
+
+        header{
+            grid-column: span 2;
+        }
+    }
+}
